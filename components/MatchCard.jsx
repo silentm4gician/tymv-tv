@@ -10,11 +10,11 @@ const MatchCard = ({ match }) => {
   const link = extractSrcValue(match.iframe)
   return (
     <ul>
-      <li className="hover:bg-red-700 rounded p-3 mb-2 bg-zinc-900 font-semibold border border-x-red-500">
-        <Link href={{ pathname: `/player/${match.title}`, query: { data: JSON.stringify(link) } }}>
+      <Link href={{ pathname: `/player/${match.title}`, query: { data: JSON.stringify(link) } }}>
+        <li className="hover:bg-red-700 rounded p-3 mb-2 bg-zinc-900 font-semibold border border-x-red-500">
           {match.title}
-        </Link>
-      </li>
+        </li>
+      </Link>
     </ul>
   )
 }
