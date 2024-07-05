@@ -1,6 +1,5 @@
 import { getMatches } from "../request";
 
-export const revalidate = 0;
 export async function GET() {
   try {
     const matches = await getMatches();
