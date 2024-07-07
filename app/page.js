@@ -1,7 +1,7 @@
 import MatchCard from "@/components/MatchCard";
 
 export default async function Home() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/matches`, { next: { revalidate: 0 } });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/matches`, {cache:'no-cache'}, { next: { revalidate: 1 } });
 
   if (!res.ok) {
     console.error('Failed to fetch matches:', res.statusText);
