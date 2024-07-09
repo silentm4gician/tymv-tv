@@ -1,8 +1,11 @@
-"use client"
 import MatchCard from "@/components/MatchCard";
+import { revalidatePath } from "next/cache";
+
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function Home() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/matches`, {cache:'no-cache'}, { next: { revalidate: 3600 } });
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/matches`);
 
   if (!res.ok) {
     console.error('Failed to fetch matches:', res.statusText);
@@ -20,6 +23,7 @@ export default async function Home() {
   }
 
   const matches = await res.json();
+  // revalidatePath('/')
 
   return (
     <main className="flex flex-col items-center p-10 mt-10">
